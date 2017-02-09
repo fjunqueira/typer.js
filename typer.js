@@ -1,13 +1,10 @@
 class Typer {
 
-    constructor(typingSpeed, file) {
+    constructor(typingSpeed, content, output) {
 
-        this.file = file;
         this.typingSpeed = typingSpeed;
 
-        $.get(this.file, (data) => {
-            this.parseHtml(Array.from($(data)), $("#console"));
-        });
+        this.parseHtml(Array.from(content), output);
     };
 
     makePromise(node, output) {
