@@ -6,7 +6,7 @@ class Typer {
         this.typingSpeed = typingSpeed;
 
         $.get(this.file, (data) => {
-            this.parseHtml($(data).toArray(), $("#console"));
+            this.parseHtml(Array.from($(data)), $("#console"));
         });
     };
 
@@ -33,16 +33,9 @@ class Typer {
     }
 
     parseHtml(nodes, output) {
-        var promise = Promise.resolve();
-
-        nodes.forEach((node) => {
-
-            promise = promise.then(() => this.makePromise(node, output).then((output) => {
-                return this.parseHtml(node.childNodes, output);
-            }));
-        });
-
-        return promise;
+        return nodes.reduce((previous, current) => previous
+            .then(() => this.makePromise(current, output)
+                .then((output) => this.parseHtml(Array.from(current.childNodes), output))), Promise.resolve());
     }
 
     type(node, output, textPosition) {
