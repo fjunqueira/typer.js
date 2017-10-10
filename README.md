@@ -11,12 +11,11 @@ Example program:
 
 <head>
     <title>Example</title>
-    <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/fjunqueira/typer.js/4ba8280e3458d4e1d57e338e3cb9df045d671186/typer.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/fjunqueira/typer.js/5e22b17fd7ce09ebff9ae25c0530c1e639c45293/typer.js"></script>
     <script>
         $(() => {
-            new Typer(20, $("<div style='color:#0000FF'><h3>This is a heading</h3><p>This is a paragraph.</p></div>"), $("#console"));
+            typer.type(20, $("<div style='color:#0000FF'><h3>This is a heading</h3><p>This is a paragraph.</p></div>"), $("#console"));
         });
     </script>
 </head>
